@@ -1,0 +1,64 @@
+# ==========================================
+# Django & Python Core
+# ==========================================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.celery
+*.pid
+
+# Django local development data & file uploads
+db.sqlite3
+db.sqlite3-journal
+/media/
+staticfiles/
+
+# Django system & error logs
+*.log
+crash-dump-*.json
+
+# ==========================================
+# Environments (Matches your .venv setup)
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==========================================
+# Security & Secrets (CRITICAL)
+# ==========================================
+.env
+.env.*
+.secrets
+*.key
+*.pem
+private_key.json
+
+# ==========================================
+# macOS System Files (Prevents hidden junk)
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.Trashes
+
+# ==========================================
+# IDEs & Text Editors
+# ==========================================
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+ragwud/settings.py

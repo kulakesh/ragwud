@@ -1,0 +1,25 @@
+{% load static %}
+{% block header %}
+<header class="main-header main-header--one sticky-header sticky-header--normal">
+    <div class="container-fluid">
+        <div class="main-header__inner">
+            <div class="main-header__logo"><a href="index.html"><img src="{% static 'assets/images/logo-dark.png'%}" alt="Green Plastwood" width="200"></a></div>
+            <div class="main-header__right">
+                <nav class="main-header__nav main-menu">
+                    <ul class="main-menu__list">
+                        <li class="current"><a href="">Home</a></li>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="products">Products</a></li>
+                        
+                        <li><a href="galary">Gallery</a></li>
+                        
+                        <li><a href="contact-us">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-nav__btn mobile-nav__toggler"><span></span><span></span><span></span></div><a href="#" class="" id="google_translate_element"></a><a href="contact.html" class="floens-btn main-header__btn"><span>GET A QUOTE</span></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% endblock header %}
