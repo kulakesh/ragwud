@@ -1,0 +1,30 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url('{% static 'assets/images/backgrounds/page-header-bg-1-1.png' %}');"></div><!-- /.page-header__bg -->
+    <div class="container">
+        <h2 class="about.php">Products</h2>
+        <ul class="floens-breadcrumb list-unstyled">
+            <li><i class="icon-home"></i> <a href="{% url 'home' %}">Home</a></li>
+            <li><span>Products</span></li>
+        </ul><!-- /.thm-breadcrumb list-unstyled -->
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+
+{% comment %} comming soon {% endcomment %}
+<section class="contact-one section-space">
+    <div class="contact-one__bg" style="background-image: url('{% static 'assets/images/backgrounds/contact-bg-1.png' %}');"></div><!-- /.contact-one__bg -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sec-title sec-title--border flex justify-content-center">
+                <h3 class="sec-title__title">Coming Soon</h3>
+                </div><!-- /.sec-title -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

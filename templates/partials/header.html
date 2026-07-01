@@ -7,16 +7,16 @@
             <div class="main-header__right">
                 <nav class="main-header__nav main-menu">
                     <ul class="main-menu__list">
-                        <li class="current"><a href="">Home</a></li>
-                        <li><a href="about">About Us</a></li>
-                        <li><a href="products">Products</a></li>
+                        <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'products' %}">Products</a></li>
                         
-                        <li><a href="galary">Gallery</a></li>
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
                         
-                        <li><a href="contact-us">Contact Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     </ul>
                 </nav>
-                <div class="mobile-nav__btn mobile-nav__toggler"><span></span><span></span><span></span></div><a href="#" class="" id="google_translate_element"></a><a href="contact.html" class="floens-btn main-header__btn"><span>GET A QUOTE</span></a>
+                <div class="mobile-nav__btn mobile-nav__toggler"><span></span><span></span><span></span></div><a href="#" class="" id="google_translate_element"></a><a href="{% url 'contact' %}" class="floens-btn main-header__btn"><span>GET A QUOTE</span></a>
             </div>
         </div>
     </div>

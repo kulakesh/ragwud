@@ -26,11 +26,12 @@
                             <h2 class="footer-widget__title">Quick Links</h2>
                         </div>
                         <ul class="list-unstyled footer-widget__links">
-                            <li><a href="" class="text-white">Home</a></li>
-                            <li><a href="about" class="text-white">About Us</a></li>
-                            <li><a href="gallery" class="text-white">Gallery</a></li>
+                            <li><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                            <li><a href="{% url 'about' %}" class="text-white">About Us</a></li>
+                            <li><a href="{% url 'products' %}" class="text-white">Products</a></li>
+                            <li><a href="{% url 'gallery' %}" class="text-white">Gallery</a></li>
                             <li><a href="#" class="text-white">Brochure</a></li>
-                            <li><a href="contact" class="text-white">Contact Us</a></li>
+                            <li><a href="{% url 'contact' %}" class="text-white">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +55,6 @@
                             <div class="footer-widget__title-box"></div>
                             <h2 class="footer-widget__title">Find Us</h2>
                         </div>
-                        {% comment %} <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3670.4938468158275!2d72.501418!3d23.079011!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9d059a98b31f%3A0x4885107689aa2d20!2sSNG%20ECO%20INDIA%20PVT.%20LTD.%20-%20Green%20Plastwood!5e0!3m2!1sen!2sin!4v1717662347941!5m2!1sen!2sin" width="100%"></iframe> {% endcomment %}
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.924393336274!2d91.75371727541379!3d26.161747577102805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a597455ac0a1d%3A0xfa769856c9242721!2sEastElegant!5e1!3m2!1sen!2sin!4v1782894440850!5m2!1sen!2sin" width="100%"></iframe>
                     </div>
                 </div>
