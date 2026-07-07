@@ -28,6 +28,8 @@ class Product(models.Model):
         Category,
         on_delete=models.PROTECT,
         related_name="products",
+        null=True,
+        blank=True
     )
     name = models.CharField(max_length=150)
     description = models.TextField()
