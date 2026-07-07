@@ -1,0 +1,139 @@
+{% extends "partials/crm/base.html" %}
+{% load static %}
+{% block title %}Form layout{% endblock title %}
+{% block extra_css %}
+{% endblock extra_css %}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+</div>
+{% endif %}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
+    Add Product
+  </button>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Category</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td><img src="{{ product.thumbnail.url }}"></td>
+                    <td>{{ product.created_at }}</td>
+                    <td>
+                        <a href="{% url 'admin_product_show' product.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{% url 'admin_product_delete' product.id %}" method="POST" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="dialogTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{% if not product_id %}{% url 'admin_products' %}{% else %}{% url 'admin_product_update' product_id %}{% endif %}" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="modal-content">
+                
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dialogTitle">{% if not product_id %}Add{% else %}Edit{% endif %} Product </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Body -->
+                <div class="modal-body">
+                    
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                {{ form.category }}
+                                <div class="invalid-feedback">
+                                    {{ form.category.errors.as_text }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ form.name.value|default:'' }}" placeholder="Enter product name" name="name">
+                                <div class="invalid-feedback">
+                                    {{ form.name.errors.as_text }}
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control {% if form.description.errors %}is-invalid{% endif %}" placeholder="Enter product description" name="description">{{ form.description.value|default:'' }}</textarea>
+                                <div class="invalid-feedback">
+                                    {{ form.description.errors.as_text }}
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="file" class="form-control {% if form.image.errors %}is-invalid{% endif %}" name="image" accept="image/*">
+                                <div class="invalid-feedback">
+                                    {{ form.image.errors.as_text }}
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-header-footer modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+    {% if product_id %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var myModalElement = document.getElementById('addProduct');
+                var myModal = new bootstrap.Modal(myModalElement);
+                myModal.show();
+            });
+        </script>
+    {% endif %}
+{% endblock extra_js %}

@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    
+<title>Ragwud - {% block title %}{% endblock title %}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-touch-icon.png'%}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png'%}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png'%}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900;9..40,1000&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&amp;display=swap" rel="stylesheet">
+
+<link href="{% static 'assets/vendors/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/bootstrap-select/bootstrap-select.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/animate/animate.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/fontawesome/css/all.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/jquery-ui/jquery-ui.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/jarallax/jarallax.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/nouislider/nouislider.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/nouislider/nouislider.pips.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/tiny-slider/tiny-slider.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/floens-icons/style.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/swiper/css/swiper-bundle.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/owl-carousel/css/owl.carousel.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/owl-carousel/css/owl.theme.default.min.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/vendors/slick/slick.css'%}" rel="stylesheet"/>
+<link href="{% static 'assets/css/floens.css'%}" rel="stylesheet"/>
+
+
+</head>
+
+<body class="custom-cursor">
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+    <div class="preloader">
+        <div class="preloader__image" style="background-image:url({% static 'assets/images/loader.png'%})"></div>
+    </div>
+    <div class="page-wrapper">
+        {% block header %}
+        {% include "partials/website/header.html" %}
+        {% endblock header %}
+        {% block content %}
+        {% endblock content %}
+        {% block footer %}
+        {% include "partials/website/footer.html" %}   
+        {% endblock footer %}     
+
+       
+    </div>
+    <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content"><span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+        <div class="logo-box"><a href="#" aria-label="logo image"><img src="{% static 'assets/images/logo-light.png'%}" width="155" alt="logo-light"></a></div>
+        <div class="mobile-nav__container"></div>
+        <ul class="mobile-nav__contact list-unstyled">
+            <li><i class="fa fa-envelope"></i><a href="mailto:contactmarutiudyog@gmail.com"><span class="__cf_email__">contactmarutiudyog@gmail.com</span></a></li>
+            <li><i class="fa fa-phone-alt"></i><a href="tel:+919508442430">+91 9508442430</a></li>
+        </ul>
+        <div class="mobile-nav__social">
+            <a href="https://www.facebook.com/"><i class="icon-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+            <a href="https://www.twitter.com/"><i class="icon-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+            <a href="https://www.instagram.com/"><i class="icon-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+    </div>
+    </div>
+</div>
+
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><span class="scroll-to-top__text">back
+        top</span><span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span></a>
+
+
+<script src="{% static 'assets/vendors/jquery/jquery-3.7.0.min.js'%}"></script>
+<script src="{% static 'assets/vendors/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'assets/vendors/bootstrap-select/bootstrap-select.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jarallax/jarallax.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-ui/jquery-ui.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-appear/jquery.appear.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-validate/jquery.validate.min.js'%}"></script>
+<script src="{% static 'assets/vendors/nouislider/nouislider.min.js'%}"></script>
+<script src="{% static 'assets/vendors/tiny-slider/tiny-slider.js'%}"></script>
+<script src="{% static 'assets/vendors/swiper/js/swiper-bundle.min.js'%}"></script>
+<script src="{% static 'assets/vendors/wnumb/wNumb.min.js'%}"></script>
+<script src="{% static 'assets/vendors/owl-carousel/js/owl.carousel.min.js'%}"></script>
+<script src="{% static 'assets/vendors/wow/wow.js'%}"></script>
+<script src="{% static 'assets/vendors/imagesloaded/imagesloaded.min.js'%}"></script>
+<script src="{% static 'assets/vendors/isotope/isotope.js'%}"></script>
+<script src="{% static 'assets/vendors/countdown/countdown.min.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-circleType/jquery.circleType.js'%}"></script>
+<script src="{% static 'assets/vendors/jquery-lettering/jquery.lettering.min.js'%}"></script>
+<script src="{% static 'assets/vendors/slick/slick.min.js'%}"></script>
+<script src="{% static 'assets/js/floens.js'%}"></script>
+
+
+</body>
+
+</html>

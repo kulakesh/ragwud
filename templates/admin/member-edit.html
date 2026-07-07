@@ -1,0 +1,147 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Form layout{% endblock title %}
+{% block pagetitle %}Member{% endblock pagetitle %}
+{% block extra_css %}
+{% endblock extra_css %}
+{% block content %}
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Member Registration</h4>
+            </div>
+            <div class="card-body">
+                {% if form.errors %}
+
+                    <div style="color:red;">
+
+                        <ul>
+
+                            {% for field in form %}
+
+                                {% for error in field.errors %}
+
+                                    <li>
+
+                                        {{ field.label }} :
+                                        {{ error }}
+
+                                    </li>
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+                            {% for error in form.non_field_errors %}
+
+                                <li>
+
+                                    {{ error }}
+
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+
+                {% endif %}
+                {% if messages %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+                {% endif %}
+                <form action="{% url 'member_registration' %}" method="POST" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ form.name.value|default:member.name }}" placeholder="Enter your firstname" name="name">
+
+                                <div class="invalid-feedback">
+                                    {{ form.name.errors.as_text }}
+                                </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" value="{{ form.phone.value|default:member.phone }}" placeholder="9876543210" name="phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" value="{{ form.email.value|default:member.email }}" placeholder="example@gamil.com" name="email">
+
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors.as_text }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" value="{{ form.address.value|default:member.address }}" placeholder="Address 1" name="address">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" value="{{ form.city.value|default:member.city }}" placeholder="Enter your city" name="city">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="state" class="form-label">State</label>
+                                <select name="state" class="form-select" data-choices data-choices-sorting="true" >
+                                    <option value="">Choose...</option>
+                                    {% comment %} if form.state.value or form.state.value|member.state == 'Assam' then selected {% endcomment %}
+                                    <option {% if form.state.value|default:member.state == 'Assam' %}selected{% endif %}>Assam</option>
+                                    <option>West Bengal</option>
+                                    <option>Kerala</option>
+                                    <option>Goa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" value="{{ form.username.value|default:member.user.username }}" placeholder="Enter your firstname" name="username">
+
+                                <div class="invalid-feedback">
+                                    {{ form.username.errors.as_text }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}" placeholder="Enter your password" name="password">
+                                
+                                <div class="invalid-feedback">
+                                    {{ form.password.errors.as_text }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+
+{% endblock extra_js %}

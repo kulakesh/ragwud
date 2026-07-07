@@ -1,0 +1,101 @@
+{% extends "partials/crm/base.html" %}
+{% load static %}
+{% block title %}Form layout{% endblock title %}
+{% block extra_css %}
+{% endblock extra_css %}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+</div>
+{% endif %}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategory">
+    Add Categories
+  </button>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.created_at }}</td>
+                    <td>
+                        <a href="{% url 'admin_category_show' category.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <form action="{% url 'admin_category_delete' category.id %}" method="POST" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="dialogTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{% if not category_id %}{% url 'admin_category' %}{% else %}{% url 'admin_category_update' category_id %}{% endif %}" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="modal-content">
+                
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dialogTitle">{% if not category_id %}Add{% else %}Edit{% endif %} Category </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Body -->
+                <div class="modal-body">
+                    
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ form.name.value|default:'' }}" placeholder="Enter category name" name="name">
+                                <div class="invalid-feedback">
+                                    {{ form.name.errors.as_text }}
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-header-footer modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+    {% if category_id %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var myModalElement = document.getElementById('addCategory');
+                var myModal = new bootstrap.Modal(myModalElement);
+                myModal.show();
+            });
+        </script>
+    {% endif %}
+{% endblock extra_js %}
