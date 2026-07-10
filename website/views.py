@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from super.models import Category
 
 # Create your views here.
 def home(request):
@@ -14,4 +15,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def products(request):
-    return render(request, 'products.html')
+    categories = Category.objects.prefetch_related('products').order_by('id').all()
+    return render(request, 'products.html', {
+        'categories': categories
+    })

@@ -13,18 +13,54 @@
     </div><!-- /.container -->
 </section><!-- /.page-header -->
 
-{% comment %} comming soon {% endcomment %}
-<section class="contact-one section-space">
-    <div class="contact-one__bg" style="background-image: url('{% static 'assets/images/backgrounds/contact-bg-1.png' %}');"></div><!-- /.contact-one__bg -->
+<section class="product-page section-space-bottom">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-12">
-                <div class="sec-title sec-title--border flex justify-content-center">
-                <h3 class="sec-title__title">Coming Soon</h3>
-                </div><!-- /.sec-title -->
-            </div>
-        </div>
-    </div>
-</section>
+                {% for category in categories %}
+                <div class="col-lg-8 mb-3">
+                    <div class="sec-title @@extraClassName">
+                        <h6 class="sec-title__tagline">category</h6>
+                        <h3 class="sec-title__title">{{ category.name }}</h3>
+                    </div>
+                </div>
+
+                <div class="row gutter-y-30">
+                {% if category.products.all %}
+                {% for product in category.products.all %}
+                
+                    <div class="col-xl-3 col-lg-4 col-md-6 ">
+                        <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                            <div class="product__item__image">
+                                <img src="{{ product.image.url }}" alt="Natural Stone Tiles">
+                            </div><!-- /.product-image -->
+                            <div class="product__item__content">
+                                <div class="floens-ratings product__item__ratings">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                </div><!-- /.product-ratings -->
+                                <h4 class="product__item__title"><a href="#!">{{ product.name }}</a></h4><!-- /.product-title -->
+                                {% comment %}
+                                <div class="product__item__price">$82.00</div><!-- /.product-price -->
+                                <a href="cart.html" class="floens-btn product__item__link">
+                                    <span>Add to Cart</span>
+                                    <i class="icon-cart"></i>
+                                </a>
+                                {% endcomment %}
+                            </div><!-- /.product-content -->
+                        </div><!-- /.product-item -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                </div><!-- /.row -->
+            </div><!-- /.col-lg-9 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.product-page section-space-bottom -->
 
 {% endblock %}
